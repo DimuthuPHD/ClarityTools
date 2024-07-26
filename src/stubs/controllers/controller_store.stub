@@ -1,0 +1,24 @@
+<?php
+
+namespace {{Namespace}};
+
+use App\Application\Services\{{ ServiceName }};
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
+class {{ClassName}} extends Controller
+{
+    private ${{ serviceNameCamelCase }};
+
+    public function __construct({{ ServiceName }} ${{ serviceNameCamelCase }})
+    {
+        $this->{{ serviceNameCamelCase }} = ${{ serviceNameCamelCase }};
+    }
+
+    public function __invoke({{ Request }} $request): Response
+    {
+        $result = $this->{{ serviceNameCamelCase }}->{{ serviceAction }}($request->validated());
+        return new JsonResponse($result, Response::HTTP_CREATED);
+    }
+}

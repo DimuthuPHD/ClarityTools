@@ -1,0 +1,23 @@
+{
+    "name": "Dmax/cleanblueprint-laravel",
+    "description": "Make Directories to the clean architecture",
+    "autoload": {
+        "psr-4": {
+            "Dmax\\ClarityTools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dimuthu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel" : {
+            "providers" : [
+
+            ]
+        }
+    }
+}

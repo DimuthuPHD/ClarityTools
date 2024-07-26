@@ -1,0 +1,15 @@
+<?php
+
+namespace {{Namespace}};
+
+
+interface {{ClassName}}
+{
+    public function load{{ModelName}}(int $id): ? {{ModelName}};
+
+    public function create{{ModelName}}(array $data): {{ModelName}};
+
+    public function update{{ModelName}}(int $id, array $data): ? {{ModelName}};
+
+    public function delete{{ModelName}}(int $id): bool;
+}

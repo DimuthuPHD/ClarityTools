@@ -1,0 +1,81 @@
+<?php
+
+namespace {{Namespace}};
+
+use App\Infrastructure\Database\Models\{{ModelName}} as {{modelNameVariable}}Model;
+use App\Domain\{{ModelName}}\{{ModelName}};
+use App\Domain\{{ModelName}}\{{ModelName}}NotFound;
+use App\Domain\{{ModelName}}\{{ModelName}}RepositoryInterface;
+use App\Presenter\Exceptions\GeneralException;
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
+
+class {{ClassName}} implements {{ModelName}}RepositoryInterface
+{
+    protected $model;
+    protected $db;
+
+    public function __construct({{modelNameVariable}}Model $model, DatabaseManager $db)
+    {
+        $this->model = $model;
+        $this->db = $db;
+    }
+
+    public function create{{ModelName}}(array $data) : {{ModelName}}
+    {
+        try {
+            $this->db->beginTransaction();
+
+            ${{modelNameVariable}} = $this->model->create($data);
+
+            $this->db->commit();
+
+            return {{ModelName}}::fromArray(${{modelNameVariable}}->toArray());
+        } catch (QueryException $e) {
+            $this->db->rollBack();
+
+            Log::error('{{ModelName}} creation failed: ' . $e->getMessage());
+
+            throw new GeneralException(__('There was a problem creating this {{modelNameVariable}}. Please try again.'));
+        }
+    }
+
+    public function update{{ModelName}}(int $id, array $data) : {{ModelName}}
+    {
+        try {
+            $this->db->beginTransaction();
+
+            $this->model->where('id', $id)->update($data);
+
+            $this->db->commit();
+
+            $updated{{ModelName}} = $this->model->find($id);
+
+            return $updated{{ModelName}} ? {{ModelName}}::fromArray($updated{{ModelName}}->toArray()) : null;
+        } catch (QueryException $e) {
+            $this->db->rollBack();
+
+            Log::error('{{ModelName}} update failed: ' . $e->getMessage());
+
+            throw new GeneralException(__('There was a problem updating this {{modelNameVariable}}. Please try again.'));
+        }
+    }
+
+    public function delete{{ModelName}}(int $id) : bool
+    {
+        return $this->model->destroy($id);
+    }
+
+    public function load{{ModelName}}(int $id) : {{ModelName}}
+    {
+        try {
+            ${{modelNameVariable}} = $this->model->findOrFail($id);
+        } catch (ModelNotFoundException) {
+            throw new {{ModelName}}NotFound($id);
+        }
+
+        return {{ModelName}}::fromArray(${{modelNameVariable}}->toArray());
+    }
+}

@@ -1,0 +1,39 @@
+<?php
+
+namespace {{Namespace}};
+
+use DateTimeImmutable;
+
+class {{ClassName}}
+{
+    public function __construct(
+        public readonly ?int $id,
+        public readonly ?DateTimeImmutable $created_at,
+    ) {
+    }
+
+    public static function create(?int $id): self
+    {
+        return new self(
+            id: $id,
+            created_at: new DateTimeImmutable(),
+        );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+        ];
+    }
+
+    public static function fromArray(
+        array $data
+    ): self {
+        return new self(
+            id: $data['id'],
+            created_at:null,
+        );
+    }
+}

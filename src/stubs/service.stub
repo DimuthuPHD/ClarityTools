@@ -1,0 +1,36 @@
+<?php
+
+namespace {{Namespace}};
+
+use App\Domain\{{DomainClassImportPath}};
+use App\Domain\{{RepositoryInterface}};
+
+class {{ClassName}}Service implements {{DomainClass}}RepositoryInterface
+{
+    private $model;
+
+    public function __construct({{DomainClass}}RepositoryInterface $model)
+    {
+        $this->model = $model;
+    }
+
+    public function load{{DomainClass}}(int $id) : {{DomainClass}}
+    {
+        return $this->model->load{{DomainClass}}($id);
+    }
+
+    public function create{{DomainClass}}(array $data) : {{DomainClass}}
+    {
+        return $this->model->create{{DomainClass}}($data);
+    }
+
+    public function update{{DomainClass}}(int $id, array $data) : {{DomainClass}}
+    {
+        return $this->model->update{{DomainClass}}($id, $data);
+    }
+
+    public function delete{{DomainClass}}(int $id) : bool
+    {
+        return $this->model->delete{{DomainClass}}($id);
+    }
+}
