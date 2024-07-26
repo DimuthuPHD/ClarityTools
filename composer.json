@@ -1,5 +1,5 @@
 {
-    "name": "Dmax/cleanblueprint-laravel",
+    "name": "dmax/clarity-tools",
     "description": "Make Directories to the clean architecture",
     "autoload": {
         "psr-4": {
