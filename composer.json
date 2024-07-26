@@ -1,6 +1,6 @@
 {
     "name": "dmax/clarity-tools",
-    "description": "Make Directories to the clean architecture",
+    "description": "Tools for creating directories to support clean architecture in Laravel.",
     "autoload": {
         "psr-4": {
             "Dmax\\ClarityTools\\": "src/"
@@ -8,16 +8,29 @@
     },
     "authors": [
         {
-            "name": "Dimuthu"
+            "name": "Dimuthu",
+            "email": "phdimuthukumara@gmail.com"
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=7.4",
+        "illuminate/support": "^10.0"
+    },
     "extra": {
-        "laravel" : {
-            "providers" : [
-
+        "laravel": {
+            "providers": [
+                "Dmax\\ClarityTools\\ClarityToolsServiceProvider"
             ]
         }
-    }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+        ]
+    },
+    "version": "1.0.0"
 }
