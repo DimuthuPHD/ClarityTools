@@ -14,8 +14,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.4",
-        "illuminate/support": "^10.0"
+       "php": ">=7.4",
+        "illuminate/support": "^10.0 || ^11.0"
     },
     "extra": {
         "laravel": {
@@ -32,6 +32,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ]
     },
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT"
 }

@@ -4,7 +4,7 @@ namespace Dmax\ClarityTools;
 
 use Illuminate\Support\ServiceProvider;
 
-class CleanblueprintServiceProvider extends ServiceProvider {
+class ClarityToolsServiceProvider extends ServiceProvider {
 
 
     public function boot(){

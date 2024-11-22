@@ -19,14 +19,14 @@ class GenerateFiles extends Command
      *
      * @var string
      */
-    protected $signature = 'clean:generate-files {name} {--api-version=}';
+    protected $signature = 'clean:make {name} {--api-version=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Generate all the files related to a given module';
 
     /**
      * Execute the console command.
