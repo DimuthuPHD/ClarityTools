@@ -32,6 +32,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ]
     },
-    "version": "1.1.2",
+    "version": "v1.1.2",
     "license": "MIT"
 }
