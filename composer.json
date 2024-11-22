@@ -14,12 +14,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.4",
-        "illuminate/support": "^10.0 || ^11.0",
-        "dmax/clarity-tools": "^1.1"
-    },
-    "require-dev": {
-        "dmax/clarity-tools": "^1.1"
+       "php": ">=7.4",
+        "illuminate/support": "^10.0 || ^11.0"
     },
     "extra": {
         "laravel": {
